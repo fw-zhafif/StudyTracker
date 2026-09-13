@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Study Sessions</h1>
+    <a href="study-sessions/create">Tambah session</a>
 
     @foreach ($sessions as $session)
         <div>
@@ -15,6 +16,17 @@
             <p>Tanggal: {{ $session->studied_at }}</p>
             <p>Status: {{ $session->completed ? 'Selesai' : 'Belum selesai' }}</p>
         </div>
+
+        <a href="/study-sessions/{{ $session->id }}/edit">
+            Edit
+        </a>
+
+         <form method="POST" action="/study-sessions/{{ $session->id }}">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit">Delete</button>
+        </form>
     @endforeach
 </body>
 </html>

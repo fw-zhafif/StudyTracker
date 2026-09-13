@@ -17,3 +17,9 @@ Route::get('/study-sessions', [StudySessionController::class, 'index']);
 Route::get('/study-sessions/create', [StudySessionController::class, 'create']);
 
 Route::post('/study-sessions', [StudySessionController::class, 'store']);
+
+Route::get('/study-sessions/{studySession}/edit', [StudySessionController::class, 'edit']);
+
+Route::put('/study-sessions/{studySession}', [StudySessionController::class, 'update']);
+
+Route::delete('/study-sessions/{studySession}', [StudySessionController::class, 'destroy']);

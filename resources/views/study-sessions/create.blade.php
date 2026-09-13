@@ -13,17 +13,29 @@
         
         <div>
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject">
+            <input type="text" id="subject" name="subject" value="{{ old('subject') }}">
+
+            @error('subject')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <div>
             <label for="duration">Durasi (menit)</label>
-            <input type="number" id="duration" name="duration">
+            <input type="number" id="duration" name="duration" value="{{ old('duration') }}">
+            
+            @error('duration')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <div>
             <label for="studied_at">Tanggal</label>
-            <input type="date" id="studied_at" name="studied_at">
+            <input type="date" id="studied_at" name="studied_at" value="{{ old('studied_at') }}" >
+
+            @error('studied_at')
+                <p>{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit">Simpan</button>
