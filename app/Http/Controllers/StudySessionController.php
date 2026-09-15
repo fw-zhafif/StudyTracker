@@ -23,10 +23,15 @@ class StudySessionController extends Controller
 
     public function store(Request $request) 
     {
+        $request->merge([
+        'completed' => $request->boolean('completed'),
+        ]);
+
         $validate = $request->validate([
             'subject' => 'required|string|max:255',
             'duration' => 'required|integer|min:1',
             'studied_at' => 'required|date',
+            'completed' => 'boolean',
         ]);
 
         StudySession::create($validate);
@@ -43,10 +48,15 @@ class StudySessionController extends Controller
 
     public function update( Request $request, StudySession $studySession) 
     {
+        $request->merge([ 
+            'completed' => $request->boolean('completed')
+        ]);
+        
         $validate = $request->validate([
             'subject' => 'required|string|max:255',
             'duration' => 'required|integer|min:1',
             'studied_at' => 'required|date',
+            'completed' => 'boolean',
         ]);
 
         $studySession->update($validate);

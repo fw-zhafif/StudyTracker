@@ -42,6 +42,17 @@
             >
         </div>
 
+        <div>
+            <label for="completed">Selesai</label>
+            <input
+                type="checkbox"
+                id="completed"
+                name="completed"
+                value="1"
+                {{ $studySession->completed ? 'checked' : '' }}
+            >
+        </div>
+
         <button type="submit">Update</button>
     </form>
 </body>

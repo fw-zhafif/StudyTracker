@@ -37,6 +37,16 @@
                 <p>{{ $message }}</p>
             @enderror
         </div>
+        
+        <div>
+            <label for="completed">Selesai</label>
+            <input
+                type="checkbox"
+                id="completed"
+                name="completed"
+                value="1"
+            >
+        </div>
 
         <button type="submit">Simpan</button>
     </form>
