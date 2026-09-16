@@ -36,7 +36,7 @@ class StudySessionController extends Controller
 
         StudySession::create($validate);
 
-        return(redirect('/study-sessions'));
+        return redirect()->route('study-sessions.store');
     }
 
     public function edit( StudySession $studySession) 
@@ -61,13 +61,13 @@ class StudySessionController extends Controller
 
         $studySession->update($validate);
 
-        return redirect('/study-sessions');
+       return redirect()->route('study-sessions.index');
     }
 
     public function destroy(StudySession $studySession)
     {
         $studySession->delete();
 
-        return redirect('/study-sessions');
+        return redirect()->route('study-sessions.index');
     }
 }

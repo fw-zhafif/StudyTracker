@@ -8,52 +8,14 @@
 <body>
     <h1>Edit Study Session</h1>
 
-    <form method="POST" action="/study-sessions/{{ $studySession->id }}">
+    <form method="POST" action="{{ route('study-sessions.update', $studySession) }}">
         @csrf
         @method('PUT')
 
-        <div>
-            <label for="subject">Subject</label>
-            <input
-                type="text"
-                id="subject"
-                name="subject"
-                value="{{ $studySession->subject }}"
-            >
-        </div>
-
-        <div>
-            <label for="duration">Durasi (menit)</label>
-            <input
-                type="number"
-                id="duration"
-                name="duration"
-                value="{{ $studySession->duration }}"
-            >
-        </div>
-
-        <div>
-            <label for="studied_at">Tanggal</label>
-            <input
-                type="date"
-                id="studied_at"
-                name="studied_at"
-                value="{{ $studySession->studied_at }}"
-            >
-        </div>
-
-        <div>
-            <label for="completed">Selesai</label>
-            <input
-                type="checkbox"
-                id="completed"
-                name="completed"
-                value="1"
-                {{ $studySession->completed ? 'checked' : '' }}
-            >
-        </div>
+        @include('study-sessions.partials.form')
 
         <button type="submit">Update</button>
     </form>
+    
 </body>
 </html>

@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Study Sessions</h1>
-    <a href="study-sessions/create">Tambah session</a>
+    <a href="{{ route('study-sessions.create') }}">Tambah session</a>
 
     @foreach ($sessions as $session)
         <div>
@@ -17,11 +17,11 @@
             <p>Status: {{ $session->completed ? 'Selesai' : 'Belum selesai' }}</p>
         </div>
 
-        <a href="/study-sessions/{{ $session->id }}/edit">
+        <a href="{{ route('study-sessions.edit', $session) }}">
             Edit
         </a>
 
-         <form method="POST" action="/study-sessions/{{ $session->id }}">
+         <form method="POST" action="{{ route('study-sessions.destroy', $session) }}">
             @csrf
             @method('DELETE')
 
