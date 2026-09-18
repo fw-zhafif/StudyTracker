@@ -6,6 +6,9 @@
     <title>Study Sessions</title>
 </head>
 <body>
+    @if (session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
     <h1>Study Sessions</h1>
     <a href="{{ route('study-sessions.create') }}">Tambah session</a>
 

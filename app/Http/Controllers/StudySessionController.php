@@ -36,7 +36,9 @@ class StudySessionController extends Controller
 
         StudySession::create($validate);
 
-        return redirect()->route('study-sessions.store');
+        session()->flash('success', 'Data berhasil disimpan!');
+
+        return redirect()->route('study-sessions.index');
     }
 
     public function edit( StudySession $studySession) 
