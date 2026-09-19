@@ -7,14 +7,36 @@ use Illuminate\Http\Request;
 
 class StudySessionController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
-        $sessions = StudySession::all();
+        $query = StudySession::query();
+
+        //filter completed
+        if ($request->query('completed') === '1') {
+            $query->where('completed', true); 
+
+        } elseif ($request->query('completed') === '0') {
+            $query->where('completed', false);
+
+        }
+
+        //filter subject
+        if ($request->query('subject')) {
+            $query->where('subject', $request->query('subject'));
+        }
+
+        $sessions = $query->get();
+
+        $subjects = StudySession::query()
+        ->select('subject')
+        ->distinct()
+        ->get();
 
         return view('study-sessions.index', [
-            'sessions' => $sessions
+            'sessions' => $sessions,
+            'subjects' => $subjects
         ]);
-    }
+    }   
 
     public function create() 
     {
@@ -63,12 +85,16 @@ class StudySessionController extends Controller
 
         $studySession->update($validate);
 
-       return redirect()->route('study-sessions.index');
+        session()->flash('success', 'Data berhasil diperbarui!');
+
+        return redirect()->route('study-sessions.index');
     }
 
     public function destroy(StudySession $studySession)
     {
         $studySession->delete();
+
+        session()->flash('success', 'Data berhasil dihapus!');
 
         return redirect()->route('study-sessions.index');
     }
