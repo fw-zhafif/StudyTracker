@@ -24,6 +24,19 @@ class StudySessionController extends Controller
         if ($request->query('subject')) {
             $query->where('subject', $request->query('subject'));
         }
+        
+        //filter sorting time
+        if ($request->query('sort') === 'latest' ) {
+            $query->orderBy('studied_at', 'desc');
+        } 
+        elseif ($request->query('sort') === 'oldest' ) {
+            $query->orderBy('studied_at', 'asc');
+        }
+
+        //filter by search
+        if ($request->query('search')) {
+            $query->where('subject','like', '%' . $request->query('search') . '%');
+        }
 
         $sessions = $query->get();
 
@@ -31,6 +44,7 @@ class StudySessionController extends Controller
         ->select('subject')
         ->distinct()
         ->get();
+
 
         return view('study-sessions.index', [
             'sessions' => $sessions,

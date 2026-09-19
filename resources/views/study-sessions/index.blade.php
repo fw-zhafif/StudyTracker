@@ -12,6 +12,17 @@
     </style>
 </head>
 <body>
+    <form method="GET" action="{{ route('study-sessions.index')}}">
+        <input 
+            name="search" 
+            type="text" 
+            value="{{ request('search') }}"
+        >
+
+        <button type="submit">Submit</button>
+
+    </form>
+
     @if (session('success'))
         <p>{{ session('success') }}</p>
     @endif
