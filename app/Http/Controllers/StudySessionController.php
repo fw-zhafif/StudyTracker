@@ -112,4 +112,5 @@ class StudySessionController extends Controller
 
         return redirect()->route('study-sessions.index');
     }
-}
+
+    }
