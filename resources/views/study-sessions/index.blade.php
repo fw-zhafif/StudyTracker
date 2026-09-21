@@ -19,9 +19,31 @@
             value="{{ request('search') }}"
         >
 
-        <button type="submit">Submit</button>
+        @if (request()->has('completed'))
+            <input 
+                name="completed" 
+                type="hidden" 
+                value="{{ request('completed') }}"
+            >
+        @endif
 
+        <select name="subject">
+            <option value="">Semua Subject</option>
+
+            @foreach ($subjects as $subject)
+                <option 
+                    value="{{ $subject->subject }}"
+                    {{ request('subject') === $subject->subject ? 'selected' : '' }}
+                >
+                    {{ $subject->subject }}
+                </option>
+            @endforeach
+        </select>
+        
+        <button type="submit">Submit</button>
     </form>
+
+    
 
     @if (session('success'))
         <p>{{ session('success') }}</p>
@@ -33,7 +55,7 @@
         $isInCompleted = request('completed') === '0';
     @endphp
 
-    <a href="{{ route('study-sessions.index') }}"
+    <a href="{{ route('study-sessions.index', request()->except('completed'))) }}"
         class="{{ $isAll ? 'active' : ''}}">
         Semua
     </a>

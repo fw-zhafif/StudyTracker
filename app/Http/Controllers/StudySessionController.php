@@ -45,7 +45,6 @@ class StudySessionController extends Controller
         ->distinct()
         ->get();
 
-
         return view('study-sessions.index', [
             'sessions' => $sessions,
             'subjects' => $subjects
@@ -112,5 +111,4 @@ class StudySessionController extends Controller
 
         return redirect()->route('study-sessions.index');
     }
-
-    }
+}
