@@ -2,58 +2,103 @@
 
 ## Overview
 
-**Project:** StudyTracker
-**Repository:** fw-zhafif/StudyTracker
-**Status:** Early development
-**Framework:** Laravel
-**Default branch:** main
+Project: StudyTracker
+Repository: fw-zhafif/StudyTracker
+Status: Early development
+Framework: Laravel 13.17
+PHP: ^8.3
+Default branch: main
 
-## Problem
+## Why This Project Exists
 
-StudyTracker is intended to help manage and track study sessions.
+Apip is a semester-1 Informatics Engineering student who is still exploring programming and building foundational skills.
 
-The repository is still close to a Laravel starter application, with study-session CRUD routes already introduced.
+Python is currently a separate learning track for programming fundamentals and problem solving.
 
-## Goal
+StudyTracker is the main practical Laravel project: it should stay small enough to understand while being substantial enough to develop real developer skills and learn how Laravel works internally.
 
-Build a practical study-tracking application while using it as a vehicle for learning Laravel, PHP, databases, web application architecture, testing, and software engineering.
+## Learning Goal
+
+StudyTracker is not intended to demonstrate every modern web technology.
+
+It is a learning laboratory for:
+- web application fundamentals
+- HTTP and request/response flow
+- Laravel routing and controllers
+- validation
+- Blade
+- Eloquent ORM
+- SQL and database design
+- migrations
+- relationships
+- authentication and authorization
+- testing
+- Git and software-engineering workflow
 
 ## Current State
 
 Known from the repository:
-
 - Laravel 13.17
 - PHP ^8.3
 - Vite 8
 - Tailwind CSS 4
-- A StudySessionController is referenced by the web routes.
-- Study-session routes currently support index, create, store, edit, update, and destroy.
-- The default User model exists.
-- The README still largely contains the Laravel starter README.
+- StudySession model
+- StudySession CRUD routes and controller
+- search/filter/sort logic
+- Blade create/edit/index views
+- migrations for study_sessions
+- basic PHPUnit configuration
+- only starter-level automated tests
+- no authentication flow for StudyTracker yet
+- no user ownership relation for StudySession yet
 
-## AI Working Context
+## Current Domain
 
-When modifying this project, inspect the existing implementation before proposing structural changes.
+StudySession has:
+- subject
+- duration
+- studied_at
+- completed
+- timestamps
 
-Treat StudyTracker as both a real software project and a learning environment for Apip.
+## Known Technical Issues
 
-Do not add complexity merely to make the project look production-grade. Prefer the simplest architecture that supports current requirements and learning goals.
+- The study-session index Blade contains a malformed route expression that should be fixed before further feature work.
+- The controller's query/filter logic needs cleanup and better test coverage.
+- The migration history contains an early column typo, studiet_at, followed by a rename migration to studied_at.
+- README is still largely Laravel starter documentation.
+- Starter/demo files should eventually be cleaned up.
 
-## Known Gaps
+## Product Scope
 
-Verify these before relying on them:
+Keep V1 intentionally small.
 
-- actual database schema and migrations
-- StudySession model implementation
-- StudySessionController implementation
-- Blade views
-- validation rules
-- authentication requirements
-- automated test coverage
-- current UI/UX requirements
+Core V1:
+- study-session CRUD
+- completion status
+- search
+- filters
+- sorting
+- basic UI
+- validation
+- tests
 
-Do not assume these are complete merely because routes exist.
+Later learning steps:
+CRUD → Database → Relationships → Authentication → Aggregation → Testing → Deployment
 
-## Working Rule
+Explicitly avoid unnecessary complexity in V1: React, Vue, SPA architecture, REST API, Docker, microservices, Redis, queues, complex analytics, and AI features.
 
-Understand → Design → Implement → Test → Review → Record durable lessons or decisions when useful
+## AI Collaboration Rule
+
+Before substantial changes, inspect the existing implementation.
+
+Treat every feature as both software work and a learning opportunity.
+
+Use the chain:
+Concept → Mechanism → Implementation → Trade-off
+
+Give direct solutions when useful, but do not hide important reasoning or framework behavior.
+
+Do not turn simple tasks into lectures.
+
+Preserve signal, not volume, in project documentation.
